@@ -7,17 +7,10 @@ import matplotlib.pyplot as plt
 
 data_list = utils.get_files()
 
-for each in data_list:
-    willabyte = pd.read_csv(each)
-    willabyte['datetime'] = pd.to_datetime(willabyte[['Year', 'Day', 'Hour', 'Minute']].astype(str).agg('-'.join, axis=1), format='%Y-%j-%H-%M')
-    willabyte['year'] = willabyte['datetime'].dt.year
-    willabyte['day'] = willabyte['datetime'].dt.day
-    willabyte['hour'] = willabyte['datetime'].dt.hour
-    willabyte['minute'] = willabyte['datetime'].dt.minute
-    
+def generate_graph(data, file_name, month):
     plt.figure(figsize=(10,6))
     sns.scatterplot(
-        data=willabyte,
+        data=data,
         x="datetime",
         y="proton_density",
         hue="proton_speed",
@@ -31,8 +24,27 @@ for each in data_list:
     # set y-axis limits
     plt.ylim(0.1, 15)
     plt.legend(title="Proton Speed (km/s)")
-    plt.savefig(f"C:\\Users\\rcvil\\Heliospheric Anomaly\\ACE CSV\\Graphs\\Yearly_graphs\\{each}.png")
+    plt.savefig(f"C:\\Users\\cpa50\\.vscode\\Heliospheric\\Solar-Wind-Disappearance\\Monthly_graphs\\{file_name}_{month}.png")
+
+# Function to generate yearly graph
+# for each in data_list:
+#     willabyte = pd.read_csv(each)
+#     willabyte['datetime'] = pd.to_datetime(willabyte[['Year', 'Day', 'Hour', 'Minute']].astype(str).agg('-'.join, axis=1), format='%Y-%j-%H-%M')
+#     willabyte['year'] = willabyte['datetime'].dt.year
+#     willabyte['day'] = willabyte['datetime'].dt.day
+#     willabyte['hour'] = willabyte['datetime'].dt.hour
+#     willabyte['minute'] = willabyte['datetime'].dt.minute
+
+#     generate_graph(willabyte, each)
+    
 
 
+print(data_list)
+
+for year in data_list:
+    yearly_data = utils.get_monthly_data(f"C:\\Users\\cpa50\\.vscode\\Heliospheric\\Solar-Wind-Disappearance\\CSV\\{year}")
+    for month in range(11):
+        generate_graph(yearly_data[month], year, month)
+        
 
 
