@@ -18,13 +18,13 @@ def generate_graph(data, file_name, month):
         s=30,              # marker size (increase if too small)
         alpha=0.7          # transparency so overlapping points are visible
     )
-    plt.title("Proton Density vs. Timestamp (colored by Proton Speed)")
+    plt.title("Proton Density (No Limit) vs. Timestamp (colored by Proton Speed)")
     plt.xlabel("Timestamp")
-    plt.ylabel("Proton Density (cm⁻³)")
+    plt.ylabel("Proton Density (km/s)")
     # set y-axis limits
-    plt.ylim(0.1, 15)
-    plt.legend(title="Proton Speed (km/s)")
-    plt.savefig(f"C:\\Users\\cpa50\\.vscode\\Heliospheric\\Solar-Wind-Disappearance\\Monthly_graphs\\{file_name}_{month}.png")
+ 
+    plt.legend(title="Speed (km/s)")
+    plt.savefig(f"C:\\Users\\cpa50\\.vscode\\Heliospheric\\Solar-Wind-Disappearance\\Monthly_graph_density_nolimit\\{file_name}_{month}.png")
 
 # Function to generate yearly graph
 # for each in data_list:
