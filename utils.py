@@ -5,7 +5,7 @@ import pandas as pd
 
 def get_files():
     try:
-        all_entries = os.listdir("C:\\Users\\cpa50\\.vscode\\Heliospheric\\Solar-Wind-Disappearance\\CSV")
+        all_entries = os.listdir("C:\\Users\\rites\\Downloads\\Solar-Wind-Disappearance\\CSV")
         # files = [entry for entry in all_entries if os.path.isfile(os.path.join(".", entry))]
         files = all_entries
         print("Files in the folder:")
